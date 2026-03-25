@@ -17,6 +17,9 @@ jobs:
           distribution: temurin
           cache: maven
 
+      - name: Install all modules
+        run: mvn install -DskipTests --no-transfer-progress
+
       - name: Run unit tests
         run: mvn test -pl sm-core,sm-shop --no-transfer-progress
 
@@ -39,6 +42,9 @@ jobs:
           java-version: '17'
           distribution: temurin
           cache: maven
+
+      - name: Install all modules
+        run: mvn install -DskipTests --no-transfer-progress
 
       - name: Run integration tests
         run: |
