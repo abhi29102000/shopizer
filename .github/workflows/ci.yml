@@ -18,7 +18,7 @@ jobs:
           cache: maven
 
       - name: Run unit tests
-        run: ./mvnw test -pl sm-core,sm-shop --no-transfer-progress
+        run: mvn test -pl sm-core,sm-shop --no-transfer-progress
 
       - name: Upload unit test results
         if: always()
@@ -42,7 +42,7 @@ jobs:
 
       - name: Run integration tests
         run: |
-          ./mvnw test -pl sm-shop --no-transfer-progress \
+          mvn test -pl sm-shop --no-transfer-progress \
             -Dtest="**/integration/**/*Test" \
             -DfailIfNoTests=false
 
@@ -67,7 +67,7 @@ jobs:
           cache: maven
 
       - name: Build JAR
-        run: ./mvnw clean package -DskipTests --no-transfer-progress
+        run: mvn clean package -DskipTests --no-transfer-progress
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
