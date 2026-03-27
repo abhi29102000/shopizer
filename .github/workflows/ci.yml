@@ -80,3 +80,10 @@ jobs:
         with:
           name: shopizer-jar
           path: sm-shop/target/shopizer.jar
+
+      - name: Trigger infra build
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.INFRA_TOKEN }}
+          repository: abhi29102000/shopizer-infra
+          event-type: ci-complete
